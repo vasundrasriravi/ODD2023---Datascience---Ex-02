@@ -47,17 +47,24 @@ df.head()
 sns.boxplot(y='price_per_sqft',data=df)
 
 q1=df['price_per_sqft'].quantile(0.25)
+
 q3=df['price_per_sqft'].quantile(0.75)
+
 IQR=q3-q1
+
 low=q1-1.5*IQR
+
 high=q3+1.5*IQR
+
 new=df[((df['price_per_sqft']>=low)&(df['price_per_sqft']<=high))]
 
 #AFTER REMOVING OUTLIER using IQR method
 sns.boxplot(y='price_per_sqft',data=new)
 
 z=np.abs(stats.zscore(df['price_per_sqft']))
+
 new2=df[(z<3)]
+
 new2.head()
 
 #AFTER REMOVING OUTLIER using Zscore method
@@ -80,10 +87,15 @@ df.head()
 sns.boxplot(y='height',data=df)
 
 height_q1 = df['height'].quantile(0.25)
+
 height_q3 = df['height'].quantile(0.75)
+
 height_IQR = height_q3 - height_q1
+
 height_low = height_q1 - 1.5 * height_IQR
+
 height_high = height_q3 + 1.5 * height_IQR
+
 height_new=df[((df['height']>=height_low)&(df['height']<=height_high))]
 
 #AFTER REMOVING OUTLIER in HEIGHT
@@ -93,10 +105,15 @@ sns.boxplot(y='height',data=height_new)
 sns.boxplot(y='weight',data=df)
 
 weight_q1 = df['weight'].quantile(0.25)
+
 weight_q3 = df['weight'].quantile(0.75)
+
 weight_IQR = weight_q3 - weight_q1
+
 weight_low = weight_q1 - 1.5 * weight_IQR
+
 weight_high = weight_q3 + 1.5 * weight_IQR
+
 weight_new=df[((df['weight']>=weight_low)&(df['weight']<=weight_high))]
 
 #AFTER REMOVING OUTLIER in WEIGHT
