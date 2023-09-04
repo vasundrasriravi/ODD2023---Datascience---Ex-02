@@ -22,10 +22,10 @@ An Outlier is an observation in a given dataset that lies far from the rest of t
 - Step3: Detect the Outliers using IQR method and Z score.
 - Step4: Remove the outliers.
 - Step5: Plot the datas using Box Plot.
-
+```
 212222230168
 VASUNDRA SRI R
-
+```
 # Code:
 # bhp.csv:
 ```
