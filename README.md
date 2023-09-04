@@ -29,6 +29,7 @@ VASUNDRA SRI R
 
 # Code:
 # bhp.csv:
+```
 import pandas as pd
 import seaborn as sns
 import numpy as np
@@ -42,7 +43,7 @@ df.head()
 #BEFORE REMOVING OUTLIER
 sns.boxplot(y='price_per_sqft',data=df)
 
-# PERFORMING IQR METHOD
+#PERFORMING IQR METHOD
 q1=df['price_per_sqft'].quantile(0.25)
 q3=df['price_per_sqft'].quantile(0.75)
 IQR=q3-q1
@@ -53,14 +54,15 @@ new=df[((df['price_per_sqft']>=low)&(df['price_per_sqft']<=high))]
 #AFTER REMOVING OUTLIER using IQR method
 sns.boxplot(y='price_per_sqft',data=new)
 
-# PERFORMING Zscore METHOD
+#PERFORMING Zscore METHOD
 z=np.abs(stats.zscore(df['price_per_sqft']))
 new2=df[(z<3)]
 
 #AFTER REMOVING OUTLIER using Zscore method
 sns.boxplot(y="price_per_sqft",data=new2)
-
+```
 # height_weight.csv:
+```
 import pandas as pd
 import seaborn as sns
 from google.colab import files
@@ -87,7 +89,7 @@ sns.boxplot(y='height',data=height_new)
 #BEFORE REMOVING OUTLIER in WEIGHT
 sns.boxplot(y='weight',data=df)
 
-#PERFORMING IQR METHOD ON WEIGHTS
+#PERFORMING IQR METHOD ON HEIGHTS
 weight_q1 = df['weight'].quantile(0.25)
 weight_q3 = df['weight'].quantile(0.75)
 weight_IQR = weight_q3 - weight_q1
@@ -95,9 +97,9 @@ weight_low = weight_q1 - 1.5 * weight_IQR
 weight_high = weight_q3 + 1.5 * weight_IQR
 weight_new=df[((df['weight']>=weight_low)&(df['weight']<=weight_high))]
 
-## AFTER REMOVING OUTLIER in WEIGHT
+#AFTER REMOVING OUTLIER in WEIGHT
 sns.boxplot(y='weight',data=weight_new)
-
+```
 # OUTPUT:
 # bhp.csv
 ![Screenshot 2023-09-04 122735](https://github.com/vasundrasriravi/ODD2023---Datascience---Ex-02/assets/119393983/ca9c7412-62db-4c71-ac8c-d03ce50d0c8a)
