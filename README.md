@@ -24,7 +24,6 @@ An Outlier is an observation in a given dataset that lies far from the rest of t
 - Step5: Plot the datas using Box Plot.
 
 212222230168
-
 VASUNDRA SRI R
 
 # Code:
@@ -89,7 +88,7 @@ sns.boxplot(y='height',data=height_new)
 #BEFORE REMOVING OUTLIER in WEIGHT
 sns.boxplot(y='weight',data=df)
 
-#PERFORMING IQR METHOD ON HEIGHTS
+#PERFORMING IQR METHOD ON WEIGHTS
 weight_q1 = df['weight'].quantile(0.25)
 weight_q3 = df['weight'].quantile(0.75)
 weight_IQR = weight_q3 - weight_q1
