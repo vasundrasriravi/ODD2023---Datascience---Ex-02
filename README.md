@@ -35,42 +35,29 @@ import numpy as np
 from scipy import stats
 from google.colab import files
 uploaded=files.upload()
-
 df=pd.read_csv('bhp.csv')
-
 df.info()
 print(df.describe())
-
 df.head()
-
-## BEFORE REMOVING OUTLIER
-
+#BEFORE REMOVING OUTLIER
 sns.boxplot(y='price_per_sqft',data=df)
 
+# PERFORMING IQR METHOD
 q1=df['price_per_sqft'].quantile(0.25)
-
 q3=df['price_per_sqft'].quantile(0.75)
-
 IQR=q3-q1
-
 low=q1-1.5*IQR
-
 high=q3+1.5*IQR
-
 new=df[((df['price_per_sqft']>=low)&(df['price_per_sqft']<=high))]
 
-## AFTER REMOVING OUTLIER using IQR method
-
+#AFTER REMOVING OUTLIER using IQR method
 sns.boxplot(y='price_per_sqft',data=new)
 
+# PERFORMING Zscore METHOD
 z=np.abs(stats.zscore(df['price_per_sqft']))
-
 new2=df[(z<3)]
 
-new2.head()
-
-## AFTER REMOVING OUTLIER using Zscore method
-
+#AFTER REMOVING OUTLIER using Zscore method
 sns.boxplot(y="price_per_sqft",data=new2)
 
 # height_weight.csv:
@@ -78,52 +65,37 @@ import pandas as pd
 import seaborn as sns
 from google.colab import files
 uploaded=files.upload()
-
 df=pd.read_csv('height_weight.csv')
-
 df.info()
 print(df.describe())
-
 df.head()
 
-## BEFORE REMOVING OUTLIER in HEIGHT
-
+#BEFORE REMOVING OUTLIER in HEIGHT
 sns.boxplot(y='height',data=df)
 
+#PERFORMING IQR METHOD ON HEIGHTS
 height_q1 = df['height'].quantile(0.25)
-
 height_q3 = df['height'].quantile(0.75)
-
 height_IQR = height_q3 - height_q1
-
 height_low = height_q1 - 1.5 * height_IQR
-
 height_high = height_q3 + 1.5 * height_IQR
-
 height_new=df[((df['height']>=height_low)&(df['height']<=height_high))]
 
-## AFTER REMOVING OUTLIER in HEIGHT
-
+#AFTER REMOVING OUTLIER in HEIGHT
 sns.boxplot(y='height',data=height_new)
 
-## BEFORE REMOVING OUTLIER in WEIGHT
-
+#BEFORE REMOVING OUTLIER in WEIGHT
 sns.boxplot(y='weight',data=df)
 
+#PERFORMING IQR METHOD ON WEIGHTS
 weight_q1 = df['weight'].quantile(0.25)
-
 weight_q3 = df['weight'].quantile(0.75)
-
 weight_IQR = weight_q3 - weight_q1
-
 weight_low = weight_q1 - 1.5 * weight_IQR
-
 weight_high = weight_q3 + 1.5 * weight_IQR
-
 weight_new=df[((df['weight']>=weight_low)&(df['weight']<=weight_high))]
 
 ## AFTER REMOVING OUTLIER in WEIGHT
-
 sns.boxplot(y='weight',data=weight_new)
 
 # OUTPUT:
