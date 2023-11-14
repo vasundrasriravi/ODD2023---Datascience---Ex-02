@@ -1,4 +1,5 @@
-# Ex02-Outlier
+# Ex02-Outlier Detection
+# Aim:
 You are given bhp.csv which contains property prices in the city of banglore, India. You need to examine price_per_sqft column and do following,
 
 - (1) Remove outliers using IQR
